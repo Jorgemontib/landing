@@ -190,23 +190,20 @@
         let isOpen = false;
         let hasGreeted = false;
 
-        // Show tooltip after 5 seconds
+        // Show speech bubble after 3 seconds and keep it visible
         setTimeout(() => {
             if (!isOpen) {
                 tooltip.classList.add('visible');
                 setDinoState('greeting');
-                setTimeout(() => {
-                    tooltip.classList.remove('visible');
-                    setDinoState('idle');
-                }, 5000);
+                setTimeout(() => setDinoState('idle'), 2000);
             }
-        }, 5000);
+        }, 3000);
 
         // Toggle chat
         toggleBtn.addEventListener('click', () => {
             isOpen = !isOpen;
             chatWindow.classList.toggle('open', isOpen);
-            tooltip.classList.remove('visible');
+            tooltip.classList.remove('visible'); // Hide bubble when chat opens
             if (isOpen && !hasGreeted) {
                 hasGreeted = true;
                 showGreeting();
